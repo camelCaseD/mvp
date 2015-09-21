@@ -7,6 +7,8 @@ angular.module('project-management.createProject', [])
     {name: 'cyan', hex: '#00BCD4'},{name: 'green', hex: '#4CAF50'},
     {name: 'orange', hex: '#FF5722'}];
 
+    $scope.project = {};
+
     $scope.chooseColor = function(name) {
       $scope.chosenColor = name;
     };
@@ -16,7 +18,9 @@ angular.module('project-management.createProject', [])
     };
 
     $scope.createProject = function() {
-      
+      if ($scope.chosenColor) {
+        $scope.project.color = $scope.chosenColor;
+      }
     };
   }
 ]);

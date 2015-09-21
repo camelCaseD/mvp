@@ -2,14 +2,14 @@
   <div layout layout-sm="column">
     <md-input-container flex>
       <label>Project Name</label>
-      <input type="text" required />
+      <input type="text" required ng-model="project.name" />
     </md-input-container>
   </div>
 
   <div layout layout-sm="column">
     <md-input-container flex>
       <label>Project Summary</label>
-      <textarea type="text" required></textarea>
+      <textarea type="text" required ng-model="project.summary"></textarea>
     </md-input-container>
   </div>
 
