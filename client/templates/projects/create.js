@@ -20,6 +20,14 @@ angular.module('project-management.createProject', [])
     $scope.createProject = function() {
       if ($scope.chosenColor) {
         $scope.project.color = $scope.chosenColor;
+
+        Projects.insert($scope.project, function(error, id) {
+          if (error) {
+            console.error(error.reason);
+          } else {
+            $state.go('projects');
+          }
+        });
       }
     };
   }
