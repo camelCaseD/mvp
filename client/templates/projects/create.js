@@ -13,6 +13,10 @@ angular.module('project-management.createProject', [])
 
     $scope.goToProjects = function() {
       $state.go('projects');
-    }
+    };
+
+    $scope.createProject = function() {
+      
+    };
   }
 ]);
