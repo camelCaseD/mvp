@@ -1,4 +1,4 @@
-<div class="project" flex="100" ng-repeat="project in projects" style="background-color: {{project.color}};">
+<div class="project" flex="100" ng-repeat="project in projects" style="background-color: {{project.color}};" ng-click="goToProject(project._id)">
   {{project.name}}
 </div>
 

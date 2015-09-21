@@ -1,9 +1,13 @@
 angular.module('project-management.projects', [])
 
-.controller('ProjectsController', ['$scope', '$meteor', 'Auth',
-  function($scope, $meteor, Auth) {
+.controller('ProjectsController', ['$scope', '$meteor', '$state', 'Auth',
+  function($scope, $meteor, $state, Auth) {
     Auth.isSignedOut();
 
     $scope.projects = $meteor.collection(Projects);
+
+    $scope.goToProject = function(id) {
+      $state.go('project', {_id: id});
+    }
   }
 ]);
