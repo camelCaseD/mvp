@@ -12,9 +12,14 @@
       <textarea type="text" required></textarea>
     </md-input-container>
   </div>
-  
-  <div layout layout-sm="column">
+
+  <div layout layout-sm="column" style="margin-bottom: 40px;">
     <label style="color: rgba(0,0,0,0.26);">Label Color</label>
     <color-picker></color-picker>
+  </div>
+
+  <div layout layout-sm="column">
+    <md-button>Create Project</md-button>
+    <md-button ng-click="goToProjects()">Cancel</md-button>
   </div>
 </form>
