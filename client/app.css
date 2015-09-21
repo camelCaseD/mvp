@@ -28,3 +28,9 @@
   top: 25px;
   right: 25%;
 }
+
+.project {
+  height: 50px;
+  cursor: pointer;
+  display: block;
+}
