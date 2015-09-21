@@ -1,7 +1,7 @@
 angular.module('project-management.projects', [])
 
-.controller('ProjectsController', ['$scope', '$state', 'Auth',
-  function($scope, $state, Auth) {
+.controller('ProjectsController', ['$scope', 'Auth',
+  function($scope, Auth) {
     Auth.isSignedOut();
   }
 ]);
