@@ -1,4 +1,4 @@
-var app = angular.module('project-management', ['angular-meteor', 'ui.router']);
+var app = angular.module('project-management', ['angular-meteor', 'ui.router', 'ngMaterial']);
 
 app.config(['$urlRouterProvider', '$stateProvider', '$locationProvider',
   function($urlRouterProvider, $stateProvider, $locationProvider) {
