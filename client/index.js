@@ -1,4 +1,11 @@
-var app = angular.module('project-management', ['angular-meteor', 'ui.router', 'ngMaterial']);
+var app = angular.module('project-management', [
+  'project-management.home',
+  'project-management.auth',
+  'project-management.projects',
+  'angular-meteor',
+  'ui.router',
+  'ngMaterial'
+]);
 
 app.config(['$urlRouterProvider', '$stateProvider', '$locationProvider',
   function($urlRouterProvider, $stateProvider, $locationProvider) {
@@ -34,17 +41,5 @@ app.run(['$rootScope', '$location',
         $state.go('/');
       }
     });
-  }
-])
-
-app.controller('HomeController', ['$scope',
-  function($scope) {
-
-  }
-]);
-
-app.controller('ProjectsController', ['$scope', '$meteor',
-  function($scope, $meteor) {
-
   }
 ]);
