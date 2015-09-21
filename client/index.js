@@ -3,6 +3,7 @@ var app = angular.module('project-management', [
   'project-management.auth',
   'project-management.projects',
   'project-management.createProject',
+  'project-management.showProject',
   'project-management.directives.color-picker',
   'angular-meteor',
   'ui.router',
@@ -35,6 +36,11 @@ app.config(['$urlRouterProvider', '$stateProvider', '$locationProvider',
         url: '/projects/create',
         templateUrl: 'client/templates/projects/create.ng.html',
         controller: 'CreateProjectController'
+      })
+      .state('project', {
+        url: '/project/:_id',
+        templateUrl: 'client/templates/projects/show.ng.html',
+        controller: 'ProjectController'
       });
 
     $urlRouterProvider.otherwise('/projects');
