@@ -89,7 +89,11 @@ angular.module('project-management.showProject', ['project-management.createTask
         },
         controller: 'ClockTaskController'
       });
-    }
+    };
+
+    $scope.estimate = function(project) {
+      $state.go('estimate', {projectId: project._id});
+    };
   }
 ])
 
