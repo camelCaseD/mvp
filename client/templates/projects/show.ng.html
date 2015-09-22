@@ -1,6 +1,12 @@
 <h1>{{project.name}}</h1>
 
-<h4>Tasks</h4>
+<div layout="row">
+  <h4>Tasks</h4>
+  <md-button ng-click="createTask()">
+    <md-tooltip>Add a new task</md-tooltip>
+    <md-icon>add</md-icon>
+  </md-button>
+</div>
 
 <div ng-repeat="task in project.tasks">
   {{task.name}}
