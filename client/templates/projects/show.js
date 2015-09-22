@@ -36,5 +36,19 @@ angular.module('project-management.showProject', ['project-management.createTask
           Tasks.remove({_id: task._id});
         });
     };
+
+    $scope.addSubTask = function(task, $event) {
+      $event.stopPropagation();
+
+      $mdDialog.show({
+        parentEl: angular.element(document.body),
+        targetEvent: $event,
+        templateUrl: 'client/templates/tasks/create.ng.html',
+        locals: {
+          task: task
+        },
+        controller: 'CreateSubTaskController'
+      });
+    };
   }
 ]);

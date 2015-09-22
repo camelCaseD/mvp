@@ -12,7 +12,7 @@
   <div layout="column" flex="40">
     <md-chip ng-repeat="task in tasks" ng-click="task.done = !task.done;updateTask(task)" ng-class="{focused: task.done}">
       {{task.name}}
-      <md-button ng-click="addSubTask()" class="md-icon-button" style="position: absolute; bottom: -8px; right: 40px;"><md-icon style="font-size: 20px;">add</md-icon><md-tooltip md-direction="left">Add a subtask</md-tooltip></md-button>
+      <md-button ng-click="addSubTask(task, $event)" class="md-icon-button" style="position: absolute; bottom: -8px; right: 40px;"><md-icon style="font-size: 20px;">add</md-icon><md-tooltip md-direction="left">Add a subtask</md-tooltip></md-button>
       <md-button ng-click="removeTask(task, $event)" class="md-icon-button" style="position: absolute; bottom: -8px; right: 0;"><md-icon style="font-size: 20px;">clear</md-icon><md-tooltip md-direction="right">Remove task</md-tooltip></md-button>
     </md-chip>
   </div>
