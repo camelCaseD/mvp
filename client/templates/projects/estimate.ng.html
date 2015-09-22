@@ -1,1 +1,9 @@
-Estimate for {{project.name}}
+<div layout="row">
+  <h1>Estimate for {{project.name}}</h1>
+</div>
+
+<div ng-repeat="task in tasks" layout="row">
+  <md-chip style="background-color: {{task.color}};" ng-if="task.totalHours" flex="40">
+    {{task.name}} - {{task.totalHours}} hours
+  </md-chip>
+</div>
