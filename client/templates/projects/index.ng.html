@@ -7,6 +7,12 @@
   </md-button>
 </div>
 
+<div ng-if="projects.length === 0" layout="row" layout-align="center">
+  <div style="position: absolute;transform: translate(-50%);top: 40%;">
+    <h1>Create some projects below</h1>
+  </div>
+</div>
+
 <md-button class="md-fab main-action" ui-sref="createProject">
   <md-icon>add</md-icon>
   <md-tooltip md-direction="left">
