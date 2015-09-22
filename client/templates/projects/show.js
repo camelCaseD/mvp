@@ -8,7 +8,10 @@ angular.module('project-management.showProject', ['project-management.createTask
 
     $scope.$meteorSubscribe('tasks', $scope.project._id)
       .then(function(handler) {
-        $scope.tasks = Tasks.find({projectId: $scope.project._id}).fetch();
+        Tracker.autorun(function() {
+          var tasks = Tasks.find({projectId: $scope.project._id});
+          $scope.tasks = tasks.fetch();
+        });
 
         tasksHandler.push(handler);
       });
@@ -116,7 +119,10 @@ angular.module('project-management.showProject', ['project-management.createTask
   function($scope, $meteor) {
     $scope.$meteorSubscribe('subTasks', $scope.$parent.task._id)
       .then(function(handler) {
-        $scope.subTasks = Tasks.find({taskId: $scope.$parent.task._id}).fetch();
+        Tracker.autorun(function() {
+          var tasks = Tasks.find({taskId: $scope.$parent.task._id});
+          $scope.subTasks = tasks.fetch();
+        });
 
         tasksHandler.push(handler);
       });
