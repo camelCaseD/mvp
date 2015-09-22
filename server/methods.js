@@ -9,8 +9,8 @@ Meteor.methods({
     });
   },
 
-  createTask: function(task, project) {
-    task.projectId = project._id;
+  createTask: function(task, projectId) {
+    task.projectId = projectId;
 
     Tasks.insert(task, function(error, id) {
       if (error) {

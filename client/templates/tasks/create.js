@@ -19,7 +19,7 @@ angular.module('project-management.createTask', [])
       if ($scope.chosenColor) {
         $scope.task.color = $scope.chosenColor;
 
-        $meteor.call('createTask', $scope.task, project)
+        $meteor.call('createTask', $scope.task, project._id)
           .then($mdDialog.hide, function(error) {
             console.error(error);
           });
