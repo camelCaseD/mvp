@@ -4,12 +4,12 @@ Meteor.publish('projects', function() {
 
 Meteor.publish('tasks', function(projectId) {
   if (projectId) {
-    return Tasks.find({projectId: projectId}, {fields: {projectId: 0}});
+    return Tasks.find({projectId: projectId});
   }
 });
 
 Meteor.publish('subTasks', function(taskId) {
   if (taskId) {
-    return Tasks.find({taskId: taskId}, {fields: {taskId: 0}});
+    return Tasks.find({taskId: taskId});
   }
 });

@@ -4,7 +4,7 @@ angular.module('project-management.showProject', ['project-management.createTask
   function($scope, $state, $meteor, $mdDialog) {
     $scope.project = $meteor.object(Projects, $state.params._id);
 
-    $scope.tasks = $meteor.collection(Tasks).subscribe('tasks', $scope.project._id);
+    $scope.tasks = $meteor.collection(function() { return Tasks.find({projectId: $scope.project._id}); }).subscribe('tasks', $scope.project._id);
 
     $scope.createTask = function($event) {
       $mdDialog.show({
@@ -50,5 +50,11 @@ angular.module('project-management.showProject', ['project-management.createTask
         controller: 'CreateSubTaskController'
       });
     };
+  }
+])
+
+.controller('SubTaskController', ['$scope', '$meteor',
+  function($scope, $meteor) {
+    $scope.subTasks = $meteor.collection(function() { return Tasks.find({taskId: $scope.$parent.task._id}); }).subscribe('subTasks', $scope.$parent.task._id);
   }
 ]);
