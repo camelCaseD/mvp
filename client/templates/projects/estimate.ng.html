@@ -3,7 +3,17 @@
 </div>
 
 <div ng-repeat="task in tasks" layout="row">
-  <md-chip style="background-color: {{task.color}};" ng-if="task.totalHours" flex="40">
+  <md-chip layout="column" style="background-color: {{task.color}};" ng-if="task.totalHours" flex="40">
     {{task.name}} - {{task.totalHours}} hours
   </md-chip>
+
+  <md-input-container flex="20" style="position: relative;bottom: 45px;">
+    <label>Ammount to charge</label>
+    <input type="number" step="0.01" ng-model="task.charge" />
+  </md-input-container>
+</div>
+
+<div layout="row">
+  <md-button class="md-raised" ng-click="cancel()">Cancel</md-button>
+  <md-button class="md-raised md-primary" ng-click="generate()">Generate</md-button>
 </div>
