@@ -54,9 +54,15 @@ Meteor.methods({
             if (parentTask.totalHours) {
               Tasks.update({_id: task.taskId}, {$set: {totalHours: parentTask.totalHours}}, function(error) {
                 if (error) {
-                  console.error(error);
+                  throw new Meteor.Error(error.reason);
                 }
               });
+            } else {
+              Tasks.update({_id: task.taskId}, {$unset: {totalHours: ""}}, function(error) {
+                if (error) {
+                  throw new Meteor.Error(error.reason);
+                }
+              })
             }
           }
         });
