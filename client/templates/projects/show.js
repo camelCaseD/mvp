@@ -19,7 +19,10 @@ angular.module('project-management.showProject', ['project-management.createTask
     };
 
     $scope.updateTask = function(task) {
-      Tasks.update({_id: task._id}, {$set: {done: task.done}});
+      $meteor.call('markTaskAsDone', task)
+        .then(null, function(error) {
+          console.error(error);
+        });
     };
 
     $scope.removeTask = function(task, $event) {
@@ -33,7 +36,10 @@ angular.module('project-management.showProject', ['project-management.createTask
 
       $mdDialog.show(confirm)
         .then(function() {
-          Tasks.remove({_id: task._id});
+          $meteor.call('removeTask', task)
+            .then(null, function(error) {
+              console.error(error);
+            });
         });
     };
 
