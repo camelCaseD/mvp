@@ -56,6 +56,24 @@ angular.module('project-management.showProject', ['project-management.createTask
         controller: 'CreateSubTaskController'
       });
     };
+
+    $scope.removeProject = function(project) {
+      var confirm = $mdDialog.confirm()
+        .ok('Yes, delete the project')
+        .cancel('No, don\'t delte the project')
+        .title('Delete project')
+        .content('This will delete the project and all of it\'s tasks, are you sure you want to do that?');
+
+      $mdDialog.show(confirm)
+        .then(function() {
+          $meteor.call('removeProject', project._id)
+            .then(function() {
+              $state.go('projects');
+            }, function(error) {
+              console.error(error);
+            });
+        });
+    };
   }
 ])
 

@@ -47,5 +47,28 @@ Meteor.methods({
         throw new Meteor.Error(error.reason);
       }
     });
+  },
+
+  removeProject: function(projectId) {
+    var tasks = Tasks.find({projectId: projectId}).fetch();
+    tasks.forEach(function(task) {
+      Tasks.remove({taskId: task._id}, function(error) {
+        if (error) {
+          throw new Meteor.Error(error.reason);
+        }
+      });
+    });
+
+    Tasks.remove({projectId: projectId}, function(error) {
+      if (error) {
+        throw new Meteor.Error(error.reason);
+      } else {
+        Projects.remove({_id: projectId}, function(error) {
+          if (error) {
+            throw new Meteor.Error(error.reason);
+          }
+        })
+      }
+    })
   }
 });
