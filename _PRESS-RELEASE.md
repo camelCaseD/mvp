@@ -39,7 +39,7 @@ Once the project moves into development, the press release can be used as a touc
 ## Solution ##
   > Describe how your product elegantly solves the problem.
 
-  > To solve this the program will provide tools for keeping you productive while you work on the project. With integration with git and your favorite editor. It will slowly learn over time what tools you prefer to use and how long it takes to complete certain tasks. So that way generating estimates are as easy as asking a few questions. Afterwards you will use the task management list to help you with useful organization tools as your work towards completion. It will then send emails periodically based on what your for the project to the client with an invoice based off of what you completed.
+  > To solve this the program will provide tools for keeping you productive while you work on the project. It will slowly learn over time what tools you prefer to use and how long it takes to complete certain tasks. So that way generating estimates are as easy as asking a few questions. Afterwards you will use the task management list to help you with useful organization tools as your work towards completion. It will then send emails periodically based on each project to the client with an invoice based off of what you completed.
 
 ## Quote from You ##
   > A quote from a spokesperson in your company.
@@ -49,7 +49,7 @@ Once the project moves into development, the press release can be used as a touc
 ## How to Get Started ##
   > Describe how easy it is to get started.
 
-  > To get started it is as easy as signing up and downloading a tool. Then use that tool to create projects and get started on working on it.
+  > To get started it is as easy as signing up. Then click on the plus button in the bottom corner and get started on working on it.
 
 ## Customer Quote ##
   > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
