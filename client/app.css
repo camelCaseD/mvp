@@ -53,7 +53,7 @@
 }
 
 .md-chip.focused {
-  background: rgb(16,108,200);
+  background: rgb(16,108,200) !important; /* important is used to override the label color */
   color: rgba(255,255,255,0.87);
 }
 
