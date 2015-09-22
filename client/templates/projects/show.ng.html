@@ -19,7 +19,7 @@
   <div layout="column" flex="40">
     <div ng-repeat="task in tasks">
       <md-chip ng-click="task.done = !task.done;updateTask(task)" ng-class="{focused: task.done}" style="width: 100%;background-color: {{task.color}};">
-        {{task.name}} - {{task.totalHours}} hours
+        {{task.name}}<span ng-if="task.totalHours"> - {{task.totalHours}} hours</span>
 
         <md-button ng-click="addSubTask(task, $event)" class="md-icon-button" style="position: absolute; bottom: -8px; right: 80px;"><md-icon style="font-size: 20px;">add</md-icon><md-tooltip md-direction="left">Add a subtask</md-tooltip></md-button>
         <md-button ng-click="clockTask(task, $event)" class="md-icon-button" style="position: absolute; bottom: -8px; right: 40px;"><md-icon style="font-size: 20px;">access_time</md-icon><md-tooltip md-direction="left">Save Hours</md-tooltip></md-button>
@@ -28,7 +28,7 @@
 
       <div class="subTasks" ng-controller="SubTaskController">
         <md-chip ng-repeat="subTask in subTasks" ng-click="subTask.done = !subTask.done;updateTask(subTask)" ng-class="{focused: subTask.done}" style="width: 100%;background-color: {{subTask.color}};">
-          {{subTask.name}} - {{subTask.totalHours}} hours
+          {{subTask.name}}<span ng-if="subTask.totalHours"> - {{subTask.totalHours}} hours</span>
 
           <md-button ng-click="clockTask(subTask, $event)" class="md-icon-button" style="position: absolute; bottom: -8px; right: 40px;"><md-icon style="font-size: 20px;">access_time</md-icon><md-tooltip md-direction="left">Save Hours</md-tooltip></md-button>
           <md-button ng-click="removeTask(subTask, $event, true)" class="md-icon-button" style="position: absolute; bottom: -8px; right: 0;"><md-icon style="font-size: 20px;">clear</md-icon><md-tooltip md-direction="right">Remove task</md-tooltip></md-button>

@@ -9,7 +9,7 @@
       </div>
     </form>
 
-    <md-list>
+    <md-list ng-if="task.hours">
       <md-subheader>Hours</md-subheader>
       <md-list-item ng-repeat="hour in task.hours" class="md-2-line">
         <div class="md-list-item-text" layout="column">
