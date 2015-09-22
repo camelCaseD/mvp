@@ -4,7 +4,9 @@ angular.module('project-management.clockTask', [])
   function($scope, $mdDialog, $meteor, task) {
     $scope.closeDialog = $mdDialog.hide;
 
-    $scope.task = {};
+    $scope.task = {
+      hours: task.hours
+    };
 
     $scope.clock = function() {
       if ($scope.task.newHours && $scope.task.newHours > 0) {

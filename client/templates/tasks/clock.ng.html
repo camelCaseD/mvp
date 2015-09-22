@@ -8,6 +8,16 @@
         </md-input-container>
       </div>
     </form>
+
+    <md-list>
+      <md-subheader>Hours</md-subheader>
+      <md-list-item ng-repeat="hour in task.hours" class="md-2-line">
+        <div class="md-list-item-text" layout="column">
+          <h3>On {{hour.clockedAt.toLocaleDateString()}} at {{hour.clockedAt.toLocaleTimeString()}}</h3>
+          <p>You clocked in {{hour.hours}} hours</p>
+        </div>
+      </md-list-item>
+    </md-list>
   </md-dialog-content>
 
   <div class="md-actions">
