@@ -122,5 +122,24 @@ Meteor.methods({
         Tasks.update({_id: parentTask._id}, {$set: {totalHours: parentTask.totalHours}});
       }
     });
+  },
+
+  createEstimate: function(tasks, projectId) {
+    var newTasks = [];
+    var sum = 0;
+    var totalHours = 0;
+
+    tasks.forEach(function(task) {
+      newTasks.push({_id: task._id, charge: task.charge});
+
+      sum += task.charge;
+      totalHours += task.totalHours;
+    });
+
+    Estiamtes.insert({tasks: newTasks, sum: sum, hours: totalHours}, function(error) {
+      if (error) {
+        throw new Meteor.Error(error.reason);
+      }
+    });
   }
 });
