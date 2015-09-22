@@ -70,5 +70,23 @@ Meteor.methods({
         })
       }
     })
+  },
+
+  clock: function(taskId, newHours) {
+    var task = Tasks.findOne({_id: taskId});
+
+    if (!task.hours) {
+      task.hours = [];
+    }
+
+    task.hours.push({hours: newHours, clockedAt: new Date()});
+
+    task.totalHours = task.totalHours ? task.totalHours + newHours : newHours;
+
+    Tasks.update({_id: taskId}, {$set: {hours: task.hours, totalHours: task.totalHours}}, function(error) {
+      if (error) {
+        throw new Meteor.Error(error.reason);
+      }
+    });
   }
 });

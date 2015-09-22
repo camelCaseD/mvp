@@ -1,4 +1,4 @@
-angular.module('project-management.showProject', ['project-management.createTask'])
+angular.module('project-management.showProject', ['project-management.createTask', 'project-management.clockTask'])
 
 .controller('ProjectController', ['$scope', '$state', '$meteor', '$mdDialog',
   function($scope, $state, $meteor, $mdDialog) {
@@ -74,6 +74,20 @@ angular.module('project-management.showProject', ['project-management.createTask
             });
         });
     };
+
+    $scope.clockTask = function(task, $event) {
+      $event.stopPropagation();
+
+      $mdDialog.show({
+        parentEl: angular.element(document.body),
+        targetEvent: $event,
+        templateUrl: 'client/templates/tasks/clock.ng.html',
+        locals: {
+          task: task
+        },
+        controller: 'ClockTaskController'
+      });
+    }
   }
 ])
 

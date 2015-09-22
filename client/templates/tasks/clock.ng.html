@@ -1,0 +1,21 @@
+<md-dialog aria-label="Save Hours">
+  <md-dialog-content>
+    <form name="form" flex ng-submit="clock()">
+      <div layout layout-sm="column">
+        <md-input-container flex>
+          <label>Hours</label>
+          <input type="number" step="0.25" min="0" required ng-model="task.newHours" />
+        </md-input-container>
+      </div>
+    </form>
+  </md-dialog-content>
+
+  <div class="md-actions">
+    <md-button ng-click="clock()" class="md-primary">
+      Save Hours
+    </md-button>
+    <md-button ng-click="closeDialog()">
+      Cancel
+    </md-button>
+  </div>
+</md-dialog>
