@@ -8,7 +8,11 @@ angular.module('project-management.estimate', [])
 
     $scope.$meteorSubscribe('estimateData', $scope.project._id)
       .then(function(handle) {
-        $scope.tasks = $meteor.collection(Tasks);
+        Tracker.autorun(function() {
+          $scope.tasks = Tasks.find({projectId: $scope.project._id}).fetch();
+
+          console.log($scope.tasks);
+        });
 
         taskHandler = handle;
       });
@@ -17,6 +21,15 @@ angular.module('project-management.estimate', [])
       taskHandler.stop();
 
       $state.go('project', {_id: $scope.project._id});
+    }
+
+    $scope.generate = function() {
+      $meteor.call('createEstimate', $scope.tasks, $scope.project._id)
+        .then(function(estimateId) {
+          $state.go('view', {projectId: $scope.project._id, estimateId: estimateId});
+        }, function(error) {
+          console.error(error);
+        });
     }
   }
 ]);

@@ -47,6 +47,9 @@ app.config(['$urlRouterProvider', '$stateProvider', '$locationProvider',
         url: '/project/:projectId/estimate',
         templateUrl: 'client/templates/projects/estimate.ng.html',
         controller: 'EstimateController'
+      })
+      .state('viewEstimate', {
+        url: '/project/:projectId/estimate/:estimateId'
       });
 
     $urlRouterProvider.otherwise('/projects');
