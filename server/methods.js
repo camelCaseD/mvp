@@ -47,6 +47,17 @@ Meteor.methods({
         Tasks.remove({_id: task._id}, function(error) {
           if (error) {
             console.error(error);
+          } else if (task.taskId) {
+            var parentTask = Tasks.findOne({_id: task.taskId});
+            parentTask.totalHours = parentTask.totalHours ? parentTask.totalHours - task.totalHours : null;
+
+            if (parentTask.totalHours) {
+              Tasks.update({_id: task.taskId}, {$set: {totalHours: parentTask.totalHours}}, function(error) {
+                if (error) {
+                  console.error(error);
+                }
+              });
+            }
           }
         });
       }
@@ -101,7 +112,7 @@ Meteor.methods({
       } else if (task.taskId) {
         var parentTask = Tasks.findOne({_id: task.taskId});
         parentTask.totalHours = parentTask.totalHours ? parentTask.totalHours + task.totalHours : task.totalHours;
-        
+
         Tasks.update({_id: parentTask._id}, {$set: {totalHours: parentTask.totalHours}});
       }
     });
