@@ -3,5 +3,5 @@ Meteor.publish('projects', function() {
 });
 
 Meteor.publish('tasks', function(projectId) {
-  return Tasks.find({projectId: projectId});
+  return Tasks.find({projectId: projectId}, {fields: {projectId: 0}});
 });
