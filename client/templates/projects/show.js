@@ -94,6 +94,10 @@ angular.module('project-management.showProject', ['project-management.createTask
     $scope.estimate = function(project) {
       $state.go('estimate', {projectId: project._id});
     };
+
+    $scope.hasSubTasks = function(task) {
+      return Tasks.find({taskId: task._id}).count() > 0;
+    };
   }
 ])
 
