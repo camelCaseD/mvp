@@ -17,5 +17,24 @@ angular.module('project-management.showProject', ['project-management.createTask
         controller: 'CreateTaskController'
       });
     };
+
+    $scope.updateTask = function(task) {
+      Tasks.update({_id: task._id}, {$set: {done: task.done}});
+    };
+
+    $scope.removeTask = function(task, $event) {
+      $event.stopPropagation();
+
+      var confirm = $mdDialog.confirm()
+        .ok('Yes, delete the task')
+        .cancel('No, don\'t delte the task')
+        .title('Delete task')
+        .content('This will delete the task and all of it\'s sub tasks, are you sure you want to do that?');
+
+      $mdDialog.show(confirm)
+        .then(function() {
+          Tasks.remove({_id: task._id});
+        });
+    };
   }
 ]);

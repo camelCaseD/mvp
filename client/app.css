@@ -13,7 +13,7 @@
   margin-left: 5px;
 }
 
-.focused {
+#swatch.focused {
   border: 2px solid #3F51B5;
   border-radius: 50%;
 }
@@ -33,4 +33,26 @@
   height: 50px;
   cursor: pointer;
   display: block;
+}
+
+.md-chip {
+  background: rgb(224,224,224);
+  color: rgb(66,66,66);
+  cursor: default;
+  border-radius: 16px;
+  display: block;
+  height: 32px;
+  line-height: 32px;
+  margin: 8px 8px 0 0;
+  padding: 0 12px 0 12px;
+  float: left;
+  box-sizing: border-box;
+  max-width: 100%;
+  position: relative;
+  outline: 0;
+}
+
+.md-chip.focused {
+  background: rgb(16,108,200);
+  color: rgba(255,255,255,0.87);
 }
