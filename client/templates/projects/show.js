@@ -1,10 +1,17 @@
+var tasksHandler = [];
+
 angular.module('project-management.showProject', ['project-management.createTask', 'project-management.clockTask'])
 
 .controller('ProjectController', ['$scope', '$state', '$meteor', '$mdDialog',
   function($scope, $state, $meteor, $mdDialog) {
     $scope.project = $meteor.object(Projects, $state.params._id);
 
-    $scope.tasks = $meteor.collection(function() { return Tasks.find({projectId: $scope.project._id}); }).subscribe('tasks', $scope.project._id);
+    $scope.$meteorSubscribe('tasks', $scope.project._id)
+      .then(function(handler) {
+        $scope.tasks = Tasks.find({projectId: $scope.project._id}).fetch();
+
+        tasksHandler.push(handler);
+      });
 
     $scope.createTask = function($event) {
       $mdDialog.show({
@@ -92,6 +99,10 @@ angular.module('project-management.showProject', ['project-management.createTask
     };
 
     $scope.estimate = function(project) {
+      tasksHandler.forEach(function(handler) {
+        handler.stop();
+      });
+
       $state.go('estimate', {projectId: project._id});
     };
 
@@ -103,6 +114,11 @@ angular.module('project-management.showProject', ['project-management.createTask
 
 .controller('SubTaskController', ['$scope', '$meteor',
   function($scope, $meteor) {
-    $scope.subTasks = $meteor.collection(function() { return Tasks.find({taskId: $scope.$parent.task._id}); }).subscribe('subTasks', $scope.$parent.task._id);
+    $scope.$meteorSubscribe('subTasks', $scope.$parent.task._id)
+      .then(function(handler) {
+        $scope.subTasks = Tasks.find({taskId: $scope.$parent.task._id}).fetch();
+
+        tasksHandler.push(handler);
+      });
   }
 ]);
