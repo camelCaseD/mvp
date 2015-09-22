@@ -25,14 +25,16 @@ angular.module('project-management.showProject', ['project-management.createTask
         });
     };
 
-    $scope.removeTask = function(task, $event) {
+    $scope.removeTask = function(task, $event, isSubTask) {
       $event.stopPropagation();
+
+      var paragraph = !isSubTask ? 'This will delete the task and all of it\'s sub tasks, are you sure you want to do that?' : 'This will delete only this subtask.';
 
       var confirm = $mdDialog.confirm()
         .ok('Yes, delete the task')
         .cancel('No, don\'t delte the task')
         .title('Delete task')
-        .content('This will delete the task and all of it\'s sub tasks, are you sure you want to do that?');
+        .content(paragraph);
 
       $mdDialog.show(confirm)
         .then(function() {
