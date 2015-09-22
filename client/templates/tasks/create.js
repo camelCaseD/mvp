@@ -7,7 +7,9 @@ angular.module('project-management.createTask', [])
     {name: 'cyan', hex: '#00BCD4'},{name: 'green', hex: '#4CAF50'},
     {name: 'orange', hex: '#FF5722'}];
 
-    $scope.task = {};
+    $scope.task = {
+      labels: []
+    };
 
     $scope.closeDialog = $mdDialog.hide;
 

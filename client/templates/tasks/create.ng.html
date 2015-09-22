@@ -1,14 +1,19 @@
 <md-dialog aria-label="Create Task">
   <md-dialog-content>
     <form name="form" flex ng-submit="createTask()">
-      <div layout layout-sm="column">
+      <div layout="column" layout-sm="column">
         <md-input-container flex>
           <label>Task Name</label>
           <input type="text" required ng-model="task.name" />
         </md-input-container>
+
+        <md-input-container flex>
+          <label>Labels</label>
+          <md-chips ng-model="task.labels"></md-chips>
+        </md-input-container>
       </div>
 
-      <div layout layout-sm="column" style="margin-bottom: 40px;">
+      <div layout layout-sm="column" style="margin-bottom: 10px;margin-top: 40px;margin-left:5px;">
         <label style="color: rgba(0,0,0,0.26);">Label Color</label>
         <color-picker></color-picker>
       </div>

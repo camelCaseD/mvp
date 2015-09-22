@@ -12,9 +12,21 @@ Meteor.methods({
   createTask: function(task, projectId) {
     task.projectId = projectId;
 
+    var labels = task.labels;
+
     Tasks.insert(task, function(error, id) {
       if (error) {
         throw new Meteor.Error(error.reason);
+      } else {
+        for (var i = 0; i < labels.length; i++) {
+          var label = labels[i];
+
+          Labels.upsert({name: label}, {$set: {name: label}, $push: {tasks: id}}, function(error) {
+            if (error) {
+              throw new Meteor.Error(error.reason);
+            }
+          });
+        }
       }
     });
   },
