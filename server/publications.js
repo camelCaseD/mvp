@@ -7,3 +7,9 @@ Meteor.publish('tasks', function(projectId) {
     return Tasks.find({projectId: projectId}, {fields: {projectId: 0}});
   }
 });
+
+Meteor.publish('subTasks', function(taskId) {
+  if (taskId) {
+    return Tasks.find({taskId: taskId}, {fields: {taskId: 0}});
+  }
+});
