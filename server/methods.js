@@ -98,6 +98,11 @@ Meteor.methods({
     Tasks.update({_id: taskId}, {$set: {hours: task.hours, totalHours: task.totalHours}}, function(error) {
       if (error) {
         throw new Meteor.Error(error.reason);
+      } else if (task.taskId) {
+        var parentTask = Tasks.findOne({_id: task.taskId});
+        parentTask.totalHours = parentTask.totalHours ? parentTask.totalHours + task.totalHours : task.totalHours;
+        
+        Tasks.update({_id: parentTask._id}, {$set: {totalHours: parentTask.totalHours}});
       }
     });
   }
