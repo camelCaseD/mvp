@@ -32,7 +32,8 @@ Meteor.publish('estimateData', function(projectId) {
   }
 });
 
-Meteor.publish('estiamte', function(estimateId) {
+Meteor.publish('estimate', function(estimateId) {
+  console.log(estimateId);
   if (estimateId) {
     return Estimates.find({_id: estimateId});
   }
