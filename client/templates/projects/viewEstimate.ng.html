@@ -1,1 +1,11 @@
-Total - {{estimate.hours}} hours for {{estimate.sum}}
+<md-list>
+  <md-list-item class="md-2-line" ng-repeat="task in tasks">
+    <div class="md-list-item-text" layout="column">
+      <h3>{{task.name}}</h3>
+      <h4>{{task.totalHours}} hours for ${{estimate.tasks[task._id].charge}}</h4>
+    </div>
+    <md-divider></md-divider>
+  </md-list-item>
+</md-list>
+
+Total - {{estimate.hours}} hours for ${{estimate.sum}}
