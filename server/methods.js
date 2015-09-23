@@ -125,18 +125,18 @@ Meteor.methods({
   },
 
   createEstimate: function(tasks, projectId) {
-    var newTasks = [];
+    var newTasks = {};
     var sum = 0;
     var totalHours = 0;
 
     tasks.forEach(function(task) {
-      newTasks.push({_id: task._id, charge: task.charge});
+      newTasks[task._id] = {charge: task.charge};
 
       sum += task.charge;
       totalHours += task.totalHours;
     });
 
-    return Estimates.insert({tasks: newTasks, sum: sum, hours: totalHours}, function(error) {
+    return Estimates.insert({tasks: newTasks, sum: sum, hours: totalHours, projectId: projectId}, function(error) {
       if (error) {
         throw new Meteor.Error(error.reason);
       }
