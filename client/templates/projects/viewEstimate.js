@@ -11,6 +11,11 @@ angular.module('project-management.viewEstimate', [])
         $scope.$$subTasks();
       });
 
+    $scope.$meteorSubscribe('projects')
+      .then(function(handle) {
+        $scope.project = Projects.findOne({_id: $state.params.projectId});
+      });
+
     $scope.$$subTasks = function() {
       $scope.$meteorSubscribe('tasks', $scope.estimate.projectId)
         .then(function(handle) {

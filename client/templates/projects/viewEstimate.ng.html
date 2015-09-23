@@ -8,4 +8,14 @@
   </md-list-item>
 </md-list>
 
-Total - {{estimate.hours}} hours for ${{estimate.sum}}
+<div layout="row">
+  <div layout="column" flex>
+    <md-whiteframe class="md-whiteframe-z1" layout layout-align="left center" style="padding-left: 10px;">
+      <p>
+        {{project.summary}}
+      </p>
+    </md-whiteframe>
+  </div>
+</div>
+
+<h3>Total - {{estimate.hours}} hours for ${{estimate.sum}}</h3>
