@@ -136,7 +136,7 @@ Meteor.methods({
       totalHours += task.totalHours;
     });
 
-    Estimates.insert({tasks: newTasks, sum: sum, hours: totalHours}, function(error) {
+    return Estimates.insert({tasks: newTasks, sum: sum, hours: totalHours}, function(error) {
       if (error) {
         throw new Meteor.Error(error.reason);
       }
