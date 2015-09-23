@@ -26,7 +26,7 @@ angular.module('project-management.estimate', [])
     $scope.generate = function() {
       $meteor.call('createEstimate', $scope.tasks, $scope.project._id)
         .then(function(estimateId) {
-          $state.go('view', {projectId: $scope.project._id, estimateId: estimateId});
+          $state.go('viewEstimate', {projectId: $scope.project._id, estimateId: estimateId});
         }, function(error) {
           console.error(error);
         });
