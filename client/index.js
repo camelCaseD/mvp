@@ -6,6 +6,7 @@ var app = angular.module('project-management', [
   'project-management.showProject',
   'project-management.directives.color-picker',
   'project-management.estimate',
+  'project-management.viewEstimate',
   'angular-meteor',
   'ui.router',
   'ngMaterial'
@@ -49,7 +50,9 @@ app.config(['$urlRouterProvider', '$stateProvider', '$locationProvider',
         controller: 'EstimateController'
       })
       .state('viewEstimate', {
-        url: '/project/:projectId/estimate/:estimateId'
+        url: '/project/:projectId/estimate/:estimateId',
+        templateUrl: 'client/templates/projects/viewEstimate.ng.html',
+        controller: 'ViewEstimateController'
       });
 
     $urlRouterProvider.otherwise('/projects');
