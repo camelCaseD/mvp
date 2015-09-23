@@ -25,7 +25,9 @@ Meteor.publish('estimateData', function(projectId) {
     for (var i = 0; i < tasks.length; i++) {
       var task = tasks[i];
 
-      
+      if (task.charge) {
+
+      }
     }
   }
 });
