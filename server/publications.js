@@ -31,3 +31,9 @@ Meteor.publish('estimateData', function(projectId) {
     }
   }
 });
+
+Meteor.publish('estiamte', function(estimateId) {
+  if (estimateId) {
+    return Estimates.find({_id: estimateId});
+  }
+});
